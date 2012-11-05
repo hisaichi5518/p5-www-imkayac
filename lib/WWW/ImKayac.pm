@@ -1,7 +1,6 @@
 package WWW::ImKayac;
 use 5.10.1;
 use Mouse;
-use MouseX::Types::URI;
 
 use Furl;
 use Data::Validator;

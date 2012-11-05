@@ -5,8 +5,6 @@ use Mouse;
 use AnyEvent;
 use AnyEvent::HTTP;
 use WWW::ImKayac::Util;
-use Encode qw(encode_utf8);
-use Digest::SHA1 qw(sha1_hex);
 use HTTP::Request::Common qw(POST);
 
 has base_uri => (
