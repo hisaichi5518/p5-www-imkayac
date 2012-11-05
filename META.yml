@@ -1,0 +1,33 @@
+---
+abstract: 'Perl extention to do something'
+author:
+  - 'hisaichi5518 <info[at]moe-project.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.59
+  Test::More: 0.88
+  Test::Requires: 0.06
+configure_requires:
+  ExtUtils::MakeMaker: 6.59
+distribution_type: module
+dynamic_config: 1
+generated_by: 'Module::Install version 1.06'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+module_name: WWW::ImKayac
+name: WWW-ImKayac
+no_index:
+  directory:
+    - inc
+    - t
+    - xt
+requires:
+  Mouse: 0.7
+  MouseX::NativeTraits: 0.002
+  MouseX::StrictConstructor: 0.02
+  perl: 5.10.1
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: origin
+version: 0.01

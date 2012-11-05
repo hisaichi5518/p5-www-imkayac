@@ -1,0 +1,8 @@
+#!perl
+# This file is managed by /Users/hisaichi5518/perl5/perlbrew/perls/5.14.2/bin/dim.
+{
+  dist => 'WWW::ImKayac',
+  distdir => 'WWW-ImKayac',
+  module => 'WWW::ImKayac',
+  template => 'Mouse'
+}
