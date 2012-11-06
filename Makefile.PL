@@ -26,18 +26,20 @@ use inc::Module::Install;
 
 all_from 'lib/WWW/ImKayac.pm';
 
+requires 'Mouse' => 0.70;
+requires 'Data::Validator';
+requires 'AnyEvent';
+requires 'AnyEvent::HTTP';
+requires 'HTTP::Request::Common';
+requires 'JSON::XS';
+requires 'Digest::SHA1';
+requires 'Carp';
+requires 'Furl';
 
-requires 'Mouse'                     => 0.70;
-requires 'MouseX::StrictConstructor' => 0.02;
-requires 'MouseX::NativeTraits'      => 0.002;
-test_requires 'Test::More'     => '0.88';
-test_requires 'Test::Requires' => '0.06';
-
-auto_set_repository;
+test_requires 'Test::More'     => '0.96';
 
 tests_recursive;
 author_tests 'xt';
-
 
 clean_files qw(
     WWW-ImKayac-*
