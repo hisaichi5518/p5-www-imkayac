@@ -59,47 +59,49 @@ sub post {
 __PACKAGE__->meta->make_immutable;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
-WWW::ImKayac - Perl extention to do something
-
-=head1 VERSION
-
-This document describes WWW::ImKayac version 0.01.
+WWW::ImKayac - connection wrapper for im.kayac.com
 
 =head1 SYNOPSIS
 
+    use utf8;
     use WWW::ImKayac;
+    use Encode qw/encode_utf8/;
+    my $im = WWW::ImKayac->new(
+        authtype => 'password/secret_key/none',
+        username => 'im.kayac.com username',
+        password => 'im.kayac.com password/secret_key',
+    );
+
+    $im->post(message => 'encoded string!');
+    $im->post(message => encode_utf8 "decoded な文字列");
 
 =head1 DESCRIPTION
 
-# TODO
+WWW::ImKayac is connection wrapper for im.kayac.com.
 
-=head1 INTERFACE
+=head1 METHODS
 
-=head2 Functions
+=head2 C<< $self->post(message => $message) >>
 
-=head3 C<< hello() >>
+    $self->post(message => $message);
 
-# TODO
-
-=head1 DEPENDENCIES
-
-Perl 5.8.1 or later.
+post message for im.kayac.com.
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no
-exception. If you find a bug please either email me, or add the bug
-to cpan-RT.
+L<https://github.com/hisaichi5518/p5-www-imkayac/issues>
 
 =head1 SEE ALSO
 
-L<perl>
+L<WebService::ImKayac>
 
 =head1 AUTHOR
 
-hisaichi5518 E<lt>info[at]moe-project.comE<gt>
+hisaichi5518
 
 =head1 LICENSE AND COPYRIGHT
 
