@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Digest::SHA1 qw(sha1_hex);
 use Carp qw(croak);
+use Data::Validator;
 
 sub build_params {
     state $rule = Data::Validator->new(
