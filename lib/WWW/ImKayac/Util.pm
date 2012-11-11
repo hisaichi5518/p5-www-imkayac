@@ -43,3 +43,16 @@ sub build_params {
 
 
 1;
+__END__
+
+=encoding utf8
+
+=head1 NAME
+
+WWW::ImKayac::Util - utility for WWW::ImKayac
+
+=head1 FUNCTIONS
+
+=head2 C<< build_params(%params) -> Array >>
+
+=cut
