@@ -1,5 +1,11 @@
 Revision history for Perl extension WWW::ImKayac
 
-NEXT <<SET RELEASE DATE HERE>>
+0.04 2012-11-11 11:11:11
+    - can use "none" for authtype.
+    - fixed tests
+    - removed Data::Validator
+    - can use "handler"
+
+0.01 2012-11-05 18:19:03
     - original version; created by dim
       at Mon Nov  5 18:19:03 2012.

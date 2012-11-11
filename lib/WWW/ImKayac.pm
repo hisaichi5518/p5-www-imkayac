@@ -6,7 +6,7 @@ use Furl;
 use WWW::ImKayac::Util;
 use HTTP::Request::Common qw(POST);
 
-our $VERSION = '0.01';
+our $VERSION = '0.04';
 
 has ua => (
     is => 'ro',
