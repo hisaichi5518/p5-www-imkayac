@@ -8,28 +8,32 @@ use Data::Validator;
 
 sub build_params {
     state $rule = Data::Validator->new(
-        message  => 'Str',
         username => 'Str',
         password => 'Str',
         authtype => 'Str',
+        handler  => {isa => 'Str', optional => 1},
+        message  => 'Str',
     );
     my $args = $rule->validate(@_);
 
-    my $message  = $args->{message};
     my $authtype = $args->{authtype};
     my $username = $args->{username};
     my $password = $args->{password};
+    my $handler  = exists $args->{handler} ? $args->{handler} : undef;
+    my $message  = $args->{message};
 
     my @params;
     if ($authtype eq 'secret_key') {
         @params = (
             sig     => sha1_hex($message.$password),
+            handler => $handler,
             message => $message ,
         );
     }
     elsif ($authtype eq 'password') {
         @params = (
             password => $password,
+            handler => $handler,
             message  => $message,
         );
     }

@@ -36,6 +36,7 @@ sub post {
     my $authtype = $args{authtype};
     my $username = $args{username};
     my $password = $args{password};
+    my $handler  = $args{handler};
     my $message  = $args{message};
     my $cb = $args{cb};
 
@@ -43,6 +44,7 @@ sub post {
         authtype => $authtype,
         username => $username,
         password => $password,
+        defined $handler ? (handler  => $handler) : (),
         message  => $message,
     );
 
@@ -55,6 +57,7 @@ sub post {
             authtype => $authtype,
             username => $username,
             password => $password,
+            handler  => $handler,
             message  => $message,
             body     => $body,
             headers  => $headers,
@@ -83,6 +86,7 @@ WWW::ImKayac::AnyEvent - connection wrapper for im.kayac.com
             authtype => 'password/secret_key/none',
             username => 'im.kayac.com username',
             password => 'im.kayac.com password/secret_key',
+            handler  => 'http://example.com',
             message  => 'encoded string!',
         },
         {

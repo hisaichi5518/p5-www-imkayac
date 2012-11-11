@@ -74,6 +74,27 @@ test_tcp(
                 },
             );
         };
+
+        subtest 'has handler' => sub {
+            my $im = WWW::ImKayac::AnyEvent->new(
+                base_uri => "http://localhost:$port",
+            );
+
+            $im->multi_post(
+                {
+                    username => 'posted',
+                    password => 'test',
+                    authtype => 'secret_key',
+                    handler  => 'http://example.com',
+                    message  => 'message',
+                },
+                sub {
+                    my ($json_err, $json, $info) = @_;
+                    ok !$json_err;
+                    is_deeply $json, {result => 'posted', error => ''};
+                },
+            );
+        };
     },
     server => sub {
         my $port = shift;

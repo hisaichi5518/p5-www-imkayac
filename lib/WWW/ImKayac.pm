@@ -42,6 +42,7 @@ sub post {
     my $self = shift;
     state $rule = Data::Validator->new(
         message => 'Str',
+        handler => {isa => 'Str', optional => 1},
     );
     my $args = $rule->validate(@_);
 
@@ -49,6 +50,7 @@ sub post {
         authtype => $self->authtype,
         username => $self->username,
         password => $self->password,
+        exists $args->{handler} ? (handler  => $args->{handler}) : (),
         message  => $args->{message},
     );
 
@@ -85,9 +87,13 @@ WWW::ImKayac is connection wrapper for im.kayac.com.
 
 =head1 METHODS
 
-=head2 C<< $self->post(message => $message) >>
+=head2 C<< $self->post(message => $message[, handler => $handler]) >>
 
     $self->post(message => $message);
+    $self->post(
+        message => $message,
+        handler => $handler,
+    );
 
 post message for im.kayac.com.
 

@@ -24,6 +24,22 @@ test_tcp(
             );
             like $res->content, qr/"result":"posted"/;
         };
+
+        subtest 'has handler' => sub {
+            my $im = WWW::ImKayac->new(
+                username => 'posted',
+                password => 'test',
+                authtype => 'secret_key',
+                base_uri => "http://localhost:$port",
+            );
+            isa_ok $im, 'WWW::ImKayac';
+
+            ok my $res = $im->post(
+                message => 'message',
+                handler => 'http://example.com/',
+            );
+            like $res->content, qr/"result":"posted"/;
+        };
     },
     server => sub {
         my $port = shift;
