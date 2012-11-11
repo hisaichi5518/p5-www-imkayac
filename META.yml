@@ -1,11 +1,10 @@
 ---
-abstract: 'Perl extention to do something'
+abstract: 'connection wrapper for im.kayac.com'
 author:
-  - 'hisaichi5518 <info[at]moe-project.com>'
+  - hisaichi5518
 build_requires:
   ExtUtils::MakeMaker: 6.59
-  Test::More: 0.88
-  Test::Requires: 0.06
+  Test::More: 0.96
 configure_requires:
   ExtUtils::MakeMaker: 6.59
 distribution_type: module
@@ -19,15 +18,20 @@ module_name: WWW::ImKayac
 name: WWW-ImKayac
 no_index:
   directory:
+    - example
     - inc
     - t
     - xt
 requires:
+  AnyEvent: 0
+  AnyEvent::HTTP: 0
+  Carp: 0
+  Digest::SHA1: 0
+  Furl: 0
+  HTTP::Request::Common: 0
+  JSON::XS: 0
   Mouse: 0.7
-  MouseX::NativeTraits: 0.002
-  MouseX::StrictConstructor: 0.02
   perl: 5.10.1
 resources:
   license: http://dev.perl.org/licenses/
-  repository: origin
 version: 0.01

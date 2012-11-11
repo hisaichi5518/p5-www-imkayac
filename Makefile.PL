@@ -27,7 +27,6 @@ use inc::Module::Install;
 all_from 'lib/WWW/ImKayac.pm';
 
 requires 'Mouse' => 0.70;
-requires 'Data::Validator';
 requires 'AnyEvent';
 requires 'AnyEvent::HTTP';
 requires 'HTTP::Request::Common';

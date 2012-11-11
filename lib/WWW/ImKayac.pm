@@ -3,7 +3,6 @@ use 5.10.1;
 use Mouse;
 
 use Furl;
-use Data::Validator;
 use WWW::ImKayac::Util;
 use HTTP::Request::Common qw(POST);
 
@@ -39,19 +38,13 @@ has post_uri => (
 no Mouse;
 
 sub post {
-    my $self = shift;
-    state $rule = Data::Validator->new(
-        message => 'Str',
-        handler => {isa => 'Str', optional => 1},
-    );
-    my $args = $rule->validate(@_);
-
+    my ($self, %args) = @_;
     my @params = WWW::ImKayac::Util::build_params(
         authtype => $self->authtype,
         username => $self->username,
         password => $self->password,
-        exists $args->{handler} ? (handler  => $args->{handler}) : (),
-        message  => $args->{message},
+        handler  => $args{handler},
+        message  => $args{message},
     );
 
     my $req = POST $self->post_uri, \@params;

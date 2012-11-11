@@ -44,7 +44,7 @@ sub post {
         authtype => $authtype,
         username => $username,
         password => $password,
-        defined $handler ? (handler  => $handler) : (),
+        handler  => $handler,
         message  => $message,
     );
 

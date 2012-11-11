@@ -4,23 +4,14 @@ use strict;
 use warnings;
 use Digest::SHA1 qw(sha1_hex);
 use Carp qw(croak);
-use Data::Validator;
 
 sub build_params {
-    state $rule = Data::Validator->new(
-        username => 'Str',
-        password => 'Str',
-        authtype => 'Str',
-        handler  => {isa => 'Str', optional => 1},
-        message  => 'Str',
-    );
-    my $args = $rule->validate(@_);
-
-    my $authtype = $args->{authtype};
-    my $username = $args->{username};
-    my $password = $args->{password};
-    my $handler  = exists $args->{handler} ? $args->{handler} : undef;
-    my $message  = $args->{message};
+    my (%args) = @_;
+    my $authtype = $args{authtype};
+    my $username = $args{username};
+    my $password = $args{password};
+    my $message  = $args{message};
+    my $handler  = $args{handler};
 
     my @params;
     if ($authtype eq 'secret_key') {
@@ -37,8 +28,14 @@ sub build_params {
             message  => $message,
         );
     }
+    elsif ($authtype eq 'none') {
+        @params = (
+            handler => $handler,
+            message  => $message,
+        );
+    }
     else {
-        croak "authtype isnt password/secret_key";
+        croak "authtype isnt password/secret_key/none";
     }
 
     return @params;
